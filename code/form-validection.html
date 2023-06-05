@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validection</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+</head>
+<body>
+    <div class="container"><br>
+        <div class="col-lg-4 card m-auto">
+            <div class="card-body">
+                <h1>form validection</h1><br>
+            <form action="#" onsubmit="return validation()">
+                <div class="foem-group">
+                    <label>Username:</label>
+                    <input type="text" name="user" class="form-control" id="fom-1">
+                    <span class="text-danger" id="name"></span>
+                </div>
+                <div class="foem-group">
+                    <label>password:</label>
+                    <input type="password" name="pass" class="form-control" id="fom-2">
+                    <span class="text-danger" id="password"></span>
+                </div>
+                <div class="foem-group">
+                    <label>confirm password:</label>
+                    <input type="password" name="confirmpass" class="form-control" id="fom-3">
+                    <span class="text-danger" id="confirmpassword"></span>
+                </div>
+                <div class="foem-group">
+                    <label>mobile number:</label>
+                    <input type="text" name="mobile" class="form-control"  id="fom-4">
+                    <span class="text-danger" id="mobilenumber"></span>
+                </div>
+                <div class="foem-group mb-3">
+                    <label>Email:</label>
+                    <input type="Email" name="Email" class="form-control" id="fom-5">
+                    <span class="text-danger" id="Email"></span>
+                </div>
+                <button type="submit" class="btn" style="color: aliceblue;background-color: black;">submit</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function validation(){
+        var valid=true;
+        var Username=document.getElementById('fom-1').value;
+        var password=document.getElementById('fom-2').value;
+        var confirmpassword=document.getElementById('fom-3').value;
+        var mobilenumber=document.getElementById('fom-4').value;
+        var Email=document.getElementById('fom-5').value;
+
+        if(Username==''){
+            valid=false;
+            var you=document.getElementById('name')
+            you.innerHTML="* please enter your name"
+        }
+        else if(Username.length<3){
+            valid=false;
+            var you=document.getElementById('name')
+            you.innerHTML="* name must be 3 digits"
+        }
+        else{
+            document.getElementById('name').innerHTML='';
+        }
+
+        if(password==''){
+            valid=false;
+            var you=document.getElementById('password')
+            you.innerHTML="* please enter your password"
+        }
+        else if(password.length<6){
+            valid=false;
+            var you=document.getElementById('password')
+            you.innerHTML="* password should be 6 character long"
+        }
+        else{
+            document.getElementById('password').innerHTML='';
+        }
+
+        if(confirmpassword==''){
+            valid=false;
+            var you=document.getElementById('confirmpassword')
+            you.innerHTML="* retype your password"
+        }
+        else{
+            document.getElementById('confirmpassword').innerHTML='';
+        }
+        if(confirmpassword !='' && password !=''){
+            if(password!=confirmpassword){
+                valid=false;
+                var you=document.getElementById('confirmpassword')
+                 you.innerHTML="* password does not match"
+            }
+            if(password==confirmpassword){
+              document.getElementById('confirmpassword').innerHTML='';
+            }
+        }
+        
+        if(mobilenumber==''){
+            valid=false;
+            var you=document.getElementById('mobilenumber')
+            you.innerHTML="* please enter your mobile number"
+        }
+        else if(mobilenumber.length<10 || mobilenumber.length>10){
+            valid=false;
+            var you=document.getElementById('mobilenumber')
+            you.innerHTML="* please enter 10 digits number"
+        }
+        else{
+            document.getElementById('mobilenumber').innerHTML='';
+        }
+        if(Email==''){
+            valid=false;
+            var you=document.getElementById('Email')
+            you.innerHTML="* please enter your valid Email"
+        }
+        else{
+            document.getElementById('Email').innerHTML='';
+        }
+        return valid;
+    }
+</script>
+</html>
